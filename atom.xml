@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>裘继超的博客</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://myappol.cn/"/>
+  <updated>2016-12-15T02:28:12.000Z</updated>
+  <id>http://myappol.cn/</id>
+  
+  <author>
+    <name>qiujichao</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>es6语法特性</title>
+    <link href="http://myappol.cn/2016/12/13/es6%E8%AF%AD%E6%B3%95%E7%89%B9%E6%80%A7/"/>
+    <id>http://myappol.cn/2016/12/13/es6语法特性/</id>
+    <published>2016-12-13T07:56:53.000Z</published>
+    <updated>2016-12-15T02:28:12.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-let、const和block-作用域"><a href="#1-let、const和block-作用域" class="headerlink" title="1. let、const和block 作用域"></a>1. let、const和block 作用域</h2><pre><code>var a = 2;
+{
+  let a = 3;
+  console.log(a); //3
+}
+console.log(a); //2
+</code></pre><p>同样在块级作用域有效的另一个变量声明方式是 const,它可以声明一个常量。ES6中，const声明的常量类似于指针，它指向某个引用，也就是说这个［常量］ 并非一成不变的，如：<br>    {<br>      const ARR = [5,6];<br>      ARR.push(7);<br>      console.log(ARR); //[5,6,7]<br>      ARR = 10; //TypeError<br>    }</p>
+<p>有几个点需要注意：</p>
+<ul>
+<li>let 关键词声明的变量不具备变量提升（hoisting）特性</li>
+<li>let 和 const 声明只在最靠近的一个块中(花括号内)有效</li>
+<li>当使用常量const 声明时，请使用大写变量，如： CAPITAL_CASING</li>
+<li>const 在声明时必须被赋值</li>
+</ul>
+<h2 id="2-剪头函数"><a href="#2-剪头函数" class="headerlink" title="2.剪头函数"></a>2.剪头函数</h2><p>ES6中，箭头函数就是函数的一种简写形式，使用括号包裹参数，跟随一个 =&gt; ，紧接着是函数体：<br>    var getPrice = function(){<br>      return 4.56;<br>    };</p>
+<pre><code>var getPrice = ()=&gt; 4.56;
+</code></pre><p>需要注意的是，上面例子中的getPrice 箭头函数采用了简洁函数体，它不需要return语句，下面这个例子使用的是正常函数体<br>    let arr =[‘apple’,’bannar’,’orange’];</p>
+<pre><code>let breakfast = arr.map(fruit=&gt;{
+  return fruit + &apos;s&apos;;
+  })
+console.log(breakfast) //apples bananas oranges
+</code></pre><p>当然，箭头函数不仅仅是让代码变的简洁，函数中this总是绑定指向对象自身，如：</p>
+<pre><code>  function Person(){
+    this.age = 0;
+  }
+  setInterval(function growUp(){
+    //在非严格模式下，growUp()函数的this指向window对象
+    this.age++;
+    },1000);
+var person = new Person();
+</code></pre><p>我们经常需要使用一个变量来保存this，然后在growUp函数中引用：<br>    function Person(){<br>      var self = this;<br>      self.age = 0;</p>
+<pre><code>setInterval(function growUp(){
+  self.age++;
+  },1000)
+}
+</code></pre><p>而使用箭头函数可以省去这个麻烦：</p>
+<pre><code>function Person(){
+  this.age = 0;
+
+setInterval( () =&gt; {
+  this.age++;
+  },1000);
+}
+var person = new Person();
+</code></pre><h2 id="3-函数参数默认值"><a href="#3-函数参数默认值" class="headerlink" title="3.函数参数默认值"></a>3.函数参数默认值</h2><p>ES6中允许你对函数参数设置默认值：</p>
+<pre><code>let getFinalPrice = (price,tax=0.7) =&gt; price + price * tax;
+getFinalPrice(500);  //850
+</code></pre><h2 id="4-Spread-Rest-操作符"><a href="#4-Spread-Rest-操作符" class="headerlink" title="4.Spread / Rest 操作符"></a>4.Spread / Rest 操作符</h2><p>Spread / Rest 操作符指的是 <code>...</code>,具体是 Spread 还是 Rest 需要看上下文语境。<br>当被用于迭代器中时，它是一个Spread操作符：<br>    function foo(x,y,z) {<br>      console.log(x,y,z);<br>    }<br>    let arr = [1,2,3];<br>    foo(…arr); //1 2 3</p>
+<p>当被用于函数传参时，是一个Rest操作符：<br>    function foo(…args){<br>      console.log(args);<br>    }<br>    foo(1,2,3,4,5); //[1,2,3,4,5]</p>
+<h2 id="5-对象词法扩展"><a href="#5-对象词法扩展" class="headerlink" title="5. 对象词法扩展"></a>5. 对象词法扩展</h2><p>ES6允许声明在对象字面量时使用简写语法，来初始化属性变量和函数的定义方法，并且允许在对象属性中进行计算操作：<br>    function getCar(make,model,value){<br>      return {<br>        //简写变量<br>        make,   //等同于 make:make<br>        model,  //等同于 model:model<br>        value,  //等同于 value:value<br>        //属性可以使用表达式计算</p>
+<pre><code>    [&apos;make&apos; + make]: true,
+    //忽略 `function` 关键词简写对象函数
+    depreciate(){
+      this.value -= 2500;
+    }
+  }
+}
+let car = getCar(&apos;Barret&apos;,&apos;Lee&apos;,40000);
+// output: {
+//     make: &apos;Barret&apos;,
+//     model:&apos;Lee&apos;,
+//     value: 40000,
+//     makeBarret: true,
+//     depreciate: function()
+// }
+</code></pre><h2 id="6-二进制和八进制字面量"><a href="#6-二进制和八进制字面量" class="headerlink" title="6.二进制和八进制字面量"></a>6.二进制和八进制字面量</h2><p>ES6支持二进制和八进制的字面量，通过在数字前面添加0o或者0O即可将其转化为二进制：<br>    let oValue = 0o10;<br>    console.log(oValue); //8</p>
+<pre><code>let bValue = 0b10; //二进制使用 `0b` 或者 `0B`
+console.log(bValue); //2
+</code></pre><h2 id="7-对象和数组结构"><a href="#7-对象和数组结构" class="headerlink" title="7.对象和数组结构"></a>7.对象和数组结构</h2><p>结构可以避免在对象赋值时产生中间变量：<br>    function foo(){<br>      return [1,2,3];<br>    }<br>    let arr = foo(); //1 2 3<br>    let [a,b,c] = foo();<br>    console.log(a,b,c); //1 2 3<br>    function bar(){<br>      return{<br>        x:4,<br>        y:5,<br>        z:6<br>      };<br>    }<br>    let {x:x,y:y,z:z} = bar();<br>    console.log(x,y,z); //4 5 6</p>
+<h2 id="8-对象超类"><a href="#8-对象超类" class="headerlink" title="8.对象超类"></a>8.对象超类</h2><p>ES6允许在对象中使用super方法：</p>
+<pre><code>var parent = {
+  foo(){
+    console.log(&apos;Hello from the Parent&apos;);
+  }
+}
+var child = {
+  foo(){
+    super.foo();
+    console.log(&apos;Hello from the Child&apos;);
+  }
+}
+Object.setPrototypeOf(child,parent)
+child.foo(); // Hello from the Parent
+             // Hello from the Child
+</code></pre><h2 id="9-模版语法和分隔符"><a href="#9-模版语法和分隔符" class="headerlink" title="9.模版语法和分隔符"></a>9.模版语法和分隔符</h2><p>ES6中有一种十分简洁的方法组装一堆字符串和变量。</p>
+<ul>
+<li>${ … }用来渲染一个变量</li>
+<li>`作为分隔符</li>
+<li>`<pre><code>let user = &apos;Barret&apos;;
+console.log(&apos;Hi ${user}!&apos;); //Hi Barret!
+</code></pre></li>
+</ul>
+<h2 id="10-for…of-VS-for…in"><a href="#10-for…of-VS-for…in" class="headerlink" title="10. for…of  VS  for…in"></a>10. for…of  VS  for…in</h2><p>for…of 用于遍历一个迭代器，如数组：</p>
+<pre><code>let nicknames = [&apos;di&apos;,&apos;boo&apos;,&apos;punkeye&apos;];
+nicknames.size = 3;
+for(let nickname of nicknames){
+  console.log(nickname);
+}
+Result: di,boo,punkeye
+</code></pre><p>for…in 用来遍历对象中的属性：</p>
+<p>let nicknames ={‘di’,’boo’,’punkeye’};<br>nicknames.size =3;<br>for(let nickname in nicknames){<br>  console.log(nickname);<br>}</p>
+<p>Result: 0, 1, 2, size</p>
+<h2 id="11-Map-和-WeakMap"><a href="#11-Map-和-WeakMap" class="headerlink" title="11. Map 和 WeakMap"></a>11. Map 和 WeakMap</h2><p>ES6 中两种新的数据结构集： Map 和 WeakMap。事实上每个对象都可以看作是一个Map。<br>一个对象由多个 key-val 对构成，在 Map 中，任何类型都可以作为对象的key，如：</p>
+<pre><code>var myMap = new Map();
+var keyString = &quot;a string&quot;,
+    keyObj = {},
+    keyFunc = function(){};
+
+//设置值
+myMap.set(keyString,&quot;value 与 ‘a string’ 关联&quot;);
+myMap.set(keyObj, &quot;value 与 keyObj 关联&quot;);
+myMap.set(keyFunc, &quot;value 与 keyFunc 关联&quot;);
+myMap.size; // 3
+
+// 获取值
+myMap.get(keyString);    // &quot;value 与 &apos;a string&apos; 关联&quot;
+myMap.get(keyObj);       // &quot;value 与 keyObj 关联&quot;
+myMap.get(keyFunc);      // &quot;value 与 keyFunc 关联&quot;
+</code></pre><p>WeakMap 就是一个 Map，只不过它的所有 key 都是弱引用，意思就是 WeakMap 中的东西垃圾回收时不考虑，使用它不用担心内存泄漏问题。</p>
+<p>另一个需要注意的点是，WeakMap 的所有 key 必须是对象。它只有四个方法 delete(key),has(key),get(key) 和 set(key, val)：<br>      let w= new WeakMap();<br>      w.set(‘a’,’b’);</p>
+<pre><code>var o1 = {},
+  o2 = function(){},
+    o3 = window;
+w.set(o1,37);
+w.set(o2,&quot;azerty&quot;);
+w.set(o3,undefined);
+
+w.get(o3) //undefined, because that is the set value
+
+w.has(o1); //true
+w.delete(o1);
+w.has(o1); //false
+</code></pre><h2 id="12-Set-和-WeakSet"><a href="#12-Set-和-WeakSet" class="headerlink" title="12. Set 和 WeakSet"></a>12. Set 和 WeakSet</h2><p>Set 对象是一组不重复的值，重复的值将被忽略，值类型可以是原始类型和引用类型：<br>      let mySet = new Set([1, 1, 2, 2, 3, 3]);<br>      mySet.size; // 3<br>      mySet.has(1); // true<br>      mySet.add(‘strings’);<br>      mySet.add({ a: 1, b:2 });<br>      可以通过 forEach 和 for…of 来遍历 Set 对象：</p>
+<pre><code>mySet.forEach((item) =&gt; {
+  console.log(item);
+    // 1
+    // 2
+    // 3
+    // &apos;strings&apos;
+    // Object { a: 1, b: 2 }
+});
+
+for (let value of mySet) {
+  console.log(value);
+    // 1
+    // 2
+    // 3
+    // &apos;strings&apos;
+    // Object { a: 1, b: 2 }
+}
+</code></pre><p>Set 同样有 delete() 和 clear() 方法。</p>
+<h3 id="WeakSet"><a href="#WeakSet" class="headerlink" title="WeakSet"></a>WeakSet</h3><p>类似于 WeakMap，WeakSet 对象可以让你在一个集合中保存对象的弱引用，在 WeakSet 中的对象只允许出现一次：</p>
+<pre><code>var ws = new WeakSet();
+var obj = {};
+var foo = {};
+
+ws.add(window);
+ws.add(obj);
+ws.add(foo);
+
+ws.has(window); // true
+ws.has(foo);    // false, foo 没有添加成功
+
+ws.delete(window); // 从结合中删除 window 对象
+ws.has(window);    // false, window 对象已经被删除
+</code></pre><h2 id="13-类"><a href="#13-类" class="headerlink" title="13. 类"></a>13. 类</h2><p>ES6 中有 class 语法。值得注意是，这里的 class 不是新的对象继承模型，它只是原型链的语法糖表现形式。<br>函数中使用 static 关键词定义构造函数的的方法和属性：<br>      class Task {<br>        constructor() {<br>          console.log(“task instantiated!”);<br>        }</p>
+<pre><code>  showId() {
+    console.log(23);
+  }
+
+  static loadAll() {
+    console.log(&quot;Loading all tasks..&quot;);
+  }
+}
+
+console.log(typeof Task); // function
+let task = new Task(); // &quot;task instantiated!&quot;
+task.showId(); // 23
+Task.loadAll(); // &quot;Loading all tasks..&quot;
+</code></pre><p>类中的继承和超集：</p>
+<pre><code>class Car {
+  constructor() {
+    console.log(&quot;Creating a new car&quot;);
+  }
+}
+
+class Porsche extends Car {
+  constructor() {
+    super();
+    console.log(&quot;Creating Porsche&quot;);
+  }
+}
+
+let c = new Porsche();
+// Creating a new car
+// Creating Porsche
+</code></pre><p>extends 允许一个子类继承父类，需要注意的是，子类的 constructor 函数中需要执行 super() 函数。</p>
+<p>当然，你也可以在子类方法中调用父类的方法，如 super.parentMethodName()。</p>
+<p>在 这里 阅读更多关于类的介绍。</p>
+<p>有几点值得注意的是：</p>
+<p>类的声明不会提升（hoisting)，如果你要使用某个 Class，那你必须在使用之前定义它，否则会抛出一个 ReferenceError 的错误<br>在类中定义函数不需要使用 function 关键词</p>
+<h2 id="14-Symbol"><a href="#14-Symbol" class="headerlink" title="14. Symbol"></a>14. Symbol</h2><p>Symbol 是一种新的数据类型，它的值是唯一的，不可变的。ES6 中提出 symbol 的目的是为了生成一个唯一的标识符，不过你访问不到这个标识符：</p>
+<pre><code>var sym = Symbol( &quot;some optional description&quot; );
+console.log(typeof sym); // symbol
+</code></pre><p>注意，这里 Symbol 前面不能使用 new 操作符。</p>
+<p>如果它被用作一个对象的属性，那么这个属性会是不可枚举的：<br>      var o = {<br>          val: 10,<br>          [ Symbol(“random”) ]: “I’m a symbol”,<br>      };</p>
+<pre><code>console.log(Object.getOwnPropertyNames(o)); // val
+</code></pre><p>如果要获取对象 symbol 属性，需要使用 Object.getOwnPropertySymbols(o)。</p>
+<h2 id="15-迭代器（Iterators）"><a href="#15-迭代器（Iterators）" class="headerlink" title="15. 迭代器（Iterators）"></a>15. 迭代器（Iterators）</h2><p>迭代器允许每次访问数据集合的一个元素，当指针指向数据集合最后一个元素时，迭代器便会退出。它提供了next()函数来遍历一个序列，这个方法返回一个包含done 和value属性的对象。<br>ES6中可以通过Symbol.iterator 给对象设置默认的遍历器，无论什么时候对象需要被遍历，执行它的iterator方法便可以返回一个用于获取值的迭代器。<br>数组默认就是一个迭代器：</p>
+<pre><code>var arr = [11,12,13];
+var itr = arr[Symbol.iterator]();
+itr.next(); // { value: 11, done: false }
+itr.next(); // { value: 12, done: false }
+itr.next(); // { value: 13, done: false }
+itr.next(); // { value: undefined, done: true }
+</code></pre><p>你可以通过 <a href="">Symbol.iterator</a> 自定义一个对象的迭代器。</p>
+<h2 id="16-Generators"><a href="#16-Generators" class="headerlink" title="16. Generators"></a>16. Generators</h2><p>Generator 函数是 ES6 的新特性，它允许一个函数返回的可遍历对象生成多个值。</p>
+<p>在使用中你会看到 <code>*</code> 语法和一个新的关键词 yield:</p>
+<pre><code>function *infiniteNumbers() {
+  var n = 1;
+  while (true){
+    yield n++;
+  }
+}
+
+var numbers = infiniteNumbers(); // returns an iterable object
+
+numbers.next(); // { value: 1, done: false }
+numbers.next(); // { value: 2, done: false }
+numbers.next(); // { value: 3, done: false }
+</code></pre><p>每次执行 yield 时，返回值变为迭代器的下一个值。</p>
+<h2 id="17-Promises"><a href="#17-Promises" class="headerlink" title="17. Promises"></a>17. Promises</h2><p>ES6 对 Promise 有了原生的支持，一个 Promise 是一个等待被异步执行的对象，当它执行完成后，其状态会变成resolved 或者 rejected。</p>
+<pre><code>var p =new Promise(function(resolve, reject){
+    if(/* condition */){
+      resolve(/* value */)
+    }else{
+      reject(/* reason */)
+    }
+  })
+</code></pre><p>每一个 Promise 都有一个 .then 方法，这个方法接受两个参数，第一个是处理 resolved 状态的回调，一个是处理 rejected 状态的回调：</p>
+<pre><code>p.then((val) =&gt; console.log(&quot;Promise Resolved&quot;, val),
+       (err) =&gt; console.log(&quot;Promise Rejected&quot;, err));
+</code></pre>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-let、const和block-作用域&quot;&gt;&lt;a href=&quot;#1-let、const和block-作用域&quot; class=&quot;headerlink&quot; title=&quot;1. let、const和block 作用域&quot;&gt;&lt;/a&gt;1. let、const和block 作用域
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://myappol.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="http://myappol.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+      <category term="ES6" scheme="http://myappol.cn/tags/ES6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>markdown语法总结</title>
+    <link href="http://myappol.cn/2016/12/13/markdown%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/"/>
+    <id>http://myappol.cn/2016/12/13/markdown语法总结/</id>
+    <published>2016-12-13T01:19:43.000Z</published>
+    <updated>2016-12-13T02:23:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
+<p>Markdown 的目标是实现「易读易写」。</p>
+<p>Markdown 的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像强调。Markdown 的列表看起来，嗯，就是列表。Markdown 的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。</p>
+</blockquote>
+<h2 id="区块元素"><a href="#区块元素" class="headerlink" title="区块元素"></a>区块元素</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><blockquote>
+<p>Markdown 支持两种标题的语法，类 Setext 和类 atx 形式。</p>
+<p>类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - （第二阶标题），例如：</p>
+</blockquote>
+<pre><code>This is an H1
+=============
+
+This is an H2
+-------------
+</code></pre><blockquote>
+<p>任何数量的 = 和 - 都可以有效果。<br>类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶，例如：</p>
+</blockquote>
+<pre><code># 这是 H1
+
+## 这是 H2
+
+###### 这是 H6
+</code></pre><h3 id="区块引用-Blockquotes"><a href="#区块引用-Blockquotes" class="headerlink" title="区块引用 Blockquotes"></a>区块引用 Blockquotes</h3><p>Markdown 标记区块引用是使用类似 email 中用 &gt; 的引用方式。如果你还熟悉在 email 信件中的引言部分，你就知道怎么在 Markdown 文件中建立一个区块引用，那会看起来像是你自己先断好行，然后在每行的最前面加上 &gt; ：</p>
+<pre><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+&gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+&gt;
+&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
+&gt; id sem consectetuer libero luctus adipiscing.
+</code></pre><p>Markdown 也允许你偷懒只在整个段落的第一行最前面加上 &gt; ：</p>
+<pre><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
+  consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
+  Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
+
+&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
+  Suspendisse id sem consectetuer libero luctus adipiscing.
+</code></pre><p>区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 &gt; ：</p>
+<pre><code>&gt; This is the first level of quoting.
+&gt;
+&gt; This is nested blockquote.
+&gt;
+&gt; Back to the first level.
+</code></pre><p>引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：</p>
+<pre><code>&gt; ## 这是一个标题。
+&gt;
+&gt; 1.   这是第一行列表项。
+&gt; 2.   这是第二行列表项。
+&gt;
+&gt; 给出一些例子代码：
+&gt;
+&gt;     return shell_exec(&quot;echo $input | $markdown_script&quot;);
+</code></pre><p>任何像样的文本编辑器都能轻松地建立 email 型的引用。例如在 BBEdit 中，你可以选取文字后然后从选单中选择增加引用阶层。</p>
+<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>Markdown 支持有序列表和无序列表。</p>
+<p>无序列表使用星号、加号或是减号作为列表标记：</p>
+<pre><code>*   Red
+*   Green
+*   Blue
+</code></pre><p>等同于：</p>
+<pre><code>+   Red
++   Green
++   Blue
+</code></pre><p>也等同于：</p>
+<pre><code>-   Red
+-   Green
+-   Blue
+</code></pre><p>有序列表则使用数字接着一个英文句点：</p>
+<pre><code>1.  Bird
+2.  McHale
+3.  Parish
+</code></pre><p>如果要在列表项目内放进引用，那 <code>&gt;</code> 就需要缩进：</p>
+<pre><code>*   A list item with a blockquote:
+
+    &gt; This is a blockquote
+    &gt; inside a list item.
+</code></pre><h3 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h3><p>和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，<br>通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown会用<code>&lt;pre&gt;</code>和<code>&lt;code&gt;</code>标签来把代码区块包起来。</p>
+<p>要在 Markdown 中建立代码区块很简单，只要简单地缩进 4 个空格或是 1 个制表符就可以，例如，下面的输入：</p>
+<pre><code>这是一个普通段落：
+
+    这是一个代码区块。
+</code></pre><p>一个代码区块会一直持续到没有缩进的那一行（或是文件结尾）。</p>
+<h3 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h3><p>你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：</p>
+<pre><code>* * *
+
+***
+
+*****
+
+- - -
+
+---------------------------------------
+</code></pre><h2 id="区段元素"><a href="#区段元素" class="headerlink" title="区段元素"></a>区段元素</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。<br>不管是哪一种，链接文字都是用 [方括号] 来标记。</p>
+<p>要建立一个行内式的链接，只要在方块括号后面紧接着圆括号并插入网址链接即可，如果你还想要加上链接的 title 文字，只要在网址后面，用双引号把 title 文字包起来即可，例如：</p>
+<pre><code>This is [an example](http://example.com/ &quot;Title&quot;) inline link.
+
+[This link](http://example.net/) has no title attribute.
+</code></pre><p>如果你是要链接到同样主机的资源，你可以使用相对路径：</p>
+<pre><code>See my [About](/about/) page for details.
+</code></pre><p>参考式的链接是在链接文字的括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记：</p>
+<pre><code>This is [an example][id] reference-style link.
+</code></pre><p>你也可以选择性地在两个方括号中间加上一个空格：</p>
+<pre><code>This is [an example] [id] reference-style link.
+</code></pre><p>接着，在文件的任意处，你可以把这个标记的链接内容定义出来：</p>
+<pre><code>[id]: http://example.com/  &quot;Optional Title Here&quot;
+</code></pre><p>下面是一个参考式链接的范例：</p>
+<pre><code>I get 10 times more traffic from [Google] [1] than from
+[Yahoo] [2] or [MSN] [3].
+
+  [1]: http://google.com/        &quot;Google&quot;
+  [2]: http://search.yahoo.com/  &quot;Yahoo Search&quot;
+  [3]: http://search.msn.com/    &quot;MSN Search&quot;
+</code></pre><p>如果改成用链接名称的方式写：</p>
+<pre><code>I get 10 times more traffic from [Google][] than from
+[Yahoo][] or [MSN][].
+
+  [google]: http://google.com/        &quot;Google&quot;
+  [yahoo]:  http://search.yahoo.com/  &quot;Yahoo Search&quot;
+  [msn]:    http://search.msn.com/    &quot;MSN Search&quot;
+</code></pre><h3 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h3><p>Markdown 使用星号（<code>*</code>）和底线（<code>_</code>）作为标记强调字词的符号，被 或 <em> 包围的字词会被转成用 标签包围，用两个 或 </em> 包起来的话，则会被转成 <code>&lt;strong&gt;</code>，例如：</p>
+<pre><code>*single asterisks*
+
+_single underscores_
+
+**double asterisks**
+
+__double underscores__
+</code></pre><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>如果要标记一小段行内代码，你可以用反引号把它包起来（`），例如：</p>
+<pre><code>Use the `printf()` function.
+</code></pre><p>如果要在代码区段内插入反引号，你可以用多个反引号来开启和结束代码区段：</p>
+<pre><code>``There is a literal backtick (`) here.``
+</code></pre><p>代码区段的起始和结束端都可以放入一个空白，起始端后面一个，结束端前面一个，这样你就可以在区段的一开始就插入反引号：</p>
+<pre><code>A single backtick in a code span: `` ` ``
+
+A backtick-delimited string in a code span: `` `foo` ``
+</code></pre><p>在代码区段内，<code>&amp;</code> 和尖括号都会被自动地转成 HTML 实体，这使得插入 HTML 原始码变得很容易，Markdown 会把下面这段：</p>
+<pre><code>Please don&apos;t use any `&lt;blink&gt;` tags.
+</code></pre><p>你也可以这样写：</p>
+<pre><code>`&amp;#8212;` is the decimal-encoded equivalent of `&amp;mdash;`.
+</code></pre><h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>很明显地，要在纯文字应用中设计一个「自然」的语法来插入图片是有一定难度的。</p>
+<p>Markdown 使用一种和链接很相似的语法来标记图片，同样也允许两种样式： 行内式和参考式。</p>
+<p>行内式的图片语法看起来像是：</p>
+<pre><code>![Alt text](/path/to/img.jpg)
+
+![Alt text](/path/to/img.jpg &quot;Optional title&quot;)
+</code></pre><p>详细叙述如下：</p>
+<p>一个惊叹号 <code>!</code></p>
+<ul>
+<li>接着一个方括号，里面放上图片的替代文字</li>
+<li>接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上 选择性的 ‘title’ 文字。</li>
+</ul>
+<p>参考式的图片语法则长得像这样：</p>
+<pre><code>![Alt text][id]
+</code></pre><p>「id」是图片参考的名称，图片参考的定义方式则和连结参考一样：</p>
+<pre><code>[id]: url/to/image  &quot;Optional title attribute&quot;
+</code></pre><p>到目前为止， Markdown 还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的<code>&lt;img&gt;</code>标签。</p>
+<p>本地图片上传</p>
+<p>登陆<a href="http://yotuku.cn/" target="_blank" rel="external">http://yotuku.cn/</a><br>上传图片，点击markdown，粘贴到markdown文档即可</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Markdown 的目标是实现「易读易写」。&lt;/p&gt;
+&lt;p&gt;Markdown 的语法全由一些符号所组成，这些符号经
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="http://myappol.cn/2016/12/12/hello-world/"/>
+    <id>http://myappol.cn/2016/12/12/hello-world/</id>
+    <published>2016-12-12T03:09:29.000Z</published>
+    <updated>2016-12-12T03:09:29.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
