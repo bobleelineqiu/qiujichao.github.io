@@ -84,12 +84,34 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="裘继超的博客">
-<meta property="og:url" content="http://myappol.cn/index.html">
+<meta name="description" content="1. let、const和block 作用域var a = 2;
+{
+  let a = 3;
+  console.log(a); //3
+}
+console.log(a); //2
+同样在块级作用域有效的另一个变量声明方式是 const,它可以声明一个常量。ES6中，const声明的常量类似于指针，它指向某个引用，也就是说这个［常量］ 并非一成不变的，如：    {      const ARR">
+<meta property="og:type" content="article">
+<meta property="og:title" content="es6语法特性">
+<meta property="og:url" content="http://myappol.cn/2016/12/13/es6语法特性/index.html">
 <meta property="og:site_name" content="裘继超的博客">
+<meta property="og:description" content="1. let、const和block 作用域var a = 2;
+{
+  let a = 3;
+  console.log(a); //3
+}
+console.log(a); //2
+同样在块级作用域有效的另一个变量声明方式是 const,它可以声明一个常量。ES6中，const声明的常量类似于指针，它指向某个引用，也就是说这个［常量］ 并非一成不变的，如：    {      const ARR">
+<meta property="og:updated_time" content="2016-12-15T02:04:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="裘继超的博客">
+<meta name="twitter:title" content="es6语法特性">
+<meta name="twitter:description" content="1. let、const和block 作用域var a = 2;
+{
+  let a = 3;
+  console.log(a); //3
+}
+console.log(a); //2
+同样在块级作用域有效的另一个变量声明方式是 const,它可以声明一个常量。ES6中，const声明的常量类似于指针，它指向某个引用，也就是说这个［常量］ 并非一成不变的，如：    {      const ARR">
 
 
 
@@ -117,13 +139,13 @@
 
 
 
-  <link rel="canonical" href="http://myappol.cn/"/>
+  <link rel="canonical" href="http://myappol.cn/2016/12/13/es6语法特性/"/>
 
 
 
 
 
-  <title> 裘继超的博客 </title>
+  <title> es6语法特性 | 裘继超的博客 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -144,9 +166,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -225,9 +245,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -260,10 +280,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/12/13/es6语法特性/" itemprop="url">
-                  es6语法特性
-                </a>
+                es6语法特性
               
             
           </h1>
@@ -312,9 +329,7 @@
       
 
       
-        
-          
-            <h2 id="1-let、const和block-作用域"><a href="#1-let、const和block-作用域" class="headerlink" title="1. let、const和block 作用域"></a>1. let、const和block 作用域</h2><pre><code>var a = 2;
+        <h2 id="1-let、const和block-作用域"><a href="#1-let、const和block-作用域" class="headerlink" title="1. let、const和block 作用域"></a>1. let、const和block 作用域</h2><pre><code>var a = 2;
 {
   let a = 3;
   console.log(a); //3
@@ -556,16 +571,20 @@ numbers.next(); // { value: 3, done: false }
 <pre><code>p.then((val) =&gt; console.log(&quot;Promise Resolved&quot;, val),
        (err) =&gt; console.log(&quot;Promise Rejected&quot;, err));
 </code></pre>
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -574,415 +593,34 @@ numbers.next(); // { value: 3, done: false }
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://myappol.cn/2016/12/13/markdown语法总结/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="qiujichao">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="裘继超的博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="裘继超的博客" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/12/13/markdown语法总结/" rel="next" title="markdown语法总结">
+                <i class="fa fa-chevron-left"></i> markdown语法总结
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/12/13/markdown语法总结/" itemprop="url">
-                  markdown语法总结
-                </a>
-              
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-13T09:19:43+08:00">
-                2016-12-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><blockquote>
-<p>Markdown 的目标是实现「易读易写」。</p>
-<p>Markdown 的语法全由一些符号所组成，这些符号经过精挑细选，其作用一目了然。比如：在文字两旁加上星号，看起来就像强调。Markdown 的列表看起来，嗯，就是列表。Markdown 的区块引用看起来就真的像是引用一段文字，就像你曾在电子邮件中见过的那样。</p>
-</blockquote>
-<h2 id="区块元素"><a href="#区块元素" class="headerlink" title="区块元素"></a>区块元素</h2><h3 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h3><blockquote>
-<p>Markdown 支持两种标题的语法，类 Setext 和类 atx 形式。</p>
-<p>类 Setext 形式是用底线的形式，利用 = （最高阶标题）和 - （第二阶标题），例如：</p>
-</blockquote>
-<pre><code>This is an H1
-=============
-
-This is an H2
--------------
-</code></pre><blockquote>
-<p>任何数量的 = 和 - 都可以有效果。<br>类 Atx 形式则是在行首插入 1 到 6 个 # ，对应到标题 1 到 6 阶，例如：</p>
-</blockquote>
-<pre><code># 这是 H1
-
-## 这是 H2
-
-###### 这是 H6
-</code></pre><h3 id="区块引用-Blockquotes"><a href="#区块引用-Blockquotes" class="headerlink" title="区块引用 Blockquotes"></a>区块引用 Blockquotes</h3><p>Markdown 标记区块引用是使用类似 email 中用 &gt; 的引用方式。如果你还熟悉在 email 信件中的引言部分，你就知道怎么在 Markdown 文件中建立一个区块引用，那会看起来像是你自己先断好行，然后在每行的最前面加上 &gt; ：</p>
-<pre><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-&gt; consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-&gt; Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-&gt;
-&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit. Suspendisse
-&gt; id sem consectetuer libero luctus adipiscing.
-</code></pre><p>Markdown 也允许你偷懒只在整个段落的第一行最前面加上 &gt; ：</p>
-<pre><code>&gt; This is a blockquote with two paragraphs. Lorem ipsum dolor sit amet,
-  consectetuer adipiscing elit. Aliquam hendrerit mi posuere lectus.
-  Vestibulum enim wisi, viverra nec, fringilla in, laoreet vitae, risus.
-
-&gt; Donec sit amet nisl. Aliquam semper ipsum sit amet velit.
-  Suspendisse id sem consectetuer libero luctus adipiscing.
-</code></pre><p>区块引用可以嵌套（例如：引用内的引用），只要根据层次加上不同数量的 &gt; ：</p>
-<pre><code>&gt; This is the first level of quoting.
-&gt;
-&gt; This is nested blockquote.
-&gt;
-&gt; Back to the first level.
-</code></pre><p>引用的区块内也可以使用其他的 Markdown 语法，包括标题、列表、代码区块等：</p>
-<pre><code>&gt; ## 这是一个标题。
-&gt;
-&gt; 1.   这是第一行列表项。
-&gt; 2.   这是第二行列表项。
-&gt;
-&gt; 给出一些例子代码：
-&gt;
-&gt;     return shell_exec(&quot;echo $input | $markdown_script&quot;);
-</code></pre><p>任何像样的文本编辑器都能轻松地建立 email 型的引用。例如在 BBEdit 中，你可以选取文字后然后从选单中选择增加引用阶层。</p>
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>Markdown 支持有序列表和无序列表。</p>
-<p>无序列表使用星号、加号或是减号作为列表标记：</p>
-<pre><code>*   Red
-*   Green
-*   Blue
-</code></pre><p>等同于：</p>
-<pre><code>+   Red
-+   Green
-+   Blue
-</code></pre><p>也等同于：</p>
-<pre><code>-   Red
--   Green
--   Blue
-</code></pre><p>有序列表则使用数字接着一个英文句点：</p>
-<pre><code>1.  Bird
-2.  McHale
-3.  Parish
-</code></pre><p>如果要在列表项目内放进引用，那 <code>&gt;</code> 就需要缩进：</p>
-<pre><code>*   A list item with a blockquote:
-
-    &gt; This is a blockquote
-    &gt; inside a list item.
-</code></pre><h3 id="代码区块"><a href="#代码区块" class="headerlink" title="代码区块"></a>代码区块</h3><p>和程序相关的写作或是标签语言原始码通常会有已经排版好的代码区块，<br>通常这些区块我们并不希望它以一般段落文件的方式去排版，而是照原来的样子显示，Markdown会用<code>&lt;pre&gt;</code>和<code>&lt;code&gt;</code>标签来把代码区块包起来。</p>
-<p>要在 Markdown 中建立代码区块很简单，只要简单地缩进 4 个空格或是 1 个制表符就可以，例如，下面的输入：</p>
-<pre><code>这是一个普通段落：
-
-    这是一个代码区块。
-</code></pre><p>一个代码区块会一直持续到没有缩进的那一行（或是文件结尾）。</p>
-<h3 id="分隔线"><a href="#分隔线" class="headerlink" title="分隔线"></a>分隔线</h3><p>你可以在一行中用三个以上的星号、减号、底线来建立一个分隔线，行内不能有其他东西。你也可以在星号或是减号中间插入空格。下面每种写法都可以建立分隔线：</p>
-<pre><code>* * *
-
-***
-
-*****
-
-- - -
-
----------------------------------------
-</code></pre><h2 id="区段元素"><a href="#区段元素" class="headerlink" title="区段元素"></a>区段元素</h2><h3 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h3><p>Markdown 支持两种形式的链接语法： 行内式和参考式两种形式。<br>不管是哪一种，链接文字都是用 [方括号] 来标记。</p>
-<p>要建立一个行内式的链接，只要在方块括号后面紧接着圆括号并插入网址链接即可，如果你还想要加上链接的 title 文字，只要在网址后面，用双引号把 title 文字包起来即可，例如：</p>
-<pre><code>This is [an example](http://example.com/ &quot;Title&quot;) inline link.
-
-[This link](http://example.net/) has no title attribute.
-</code></pre><p>如果你是要链接到同样主机的资源，你可以使用相对路径：</p>
-<pre><code>See my [About](/about/) page for details.
-</code></pre><p>参考式的链接是在链接文字的括号后面再接上另一个方括号，而在第二个方括号里面要填入用以辨识链接的标记：</p>
-<pre><code>This is [an example][id] reference-style link.
-</code></pre><p>你也可以选择性地在两个方括号中间加上一个空格：</p>
-<pre><code>This is [an example] [id] reference-style link.
-</code></pre><p>接着，在文件的任意处，你可以把这个标记的链接内容定义出来：</p>
-<pre><code>[id]: http://example.com/  &quot;Optional Title Here&quot;
-</code></pre><p>下面是一个参考式链接的范例：</p>
-<pre><code>I get 10 times more traffic from [Google] [1] than from
-[Yahoo] [2] or [MSN] [3].
-
-  [1]: http://google.com/        &quot;Google&quot;
-  [2]: http://search.yahoo.com/  &quot;Yahoo Search&quot;
-  [3]: http://search.msn.com/    &quot;MSN Search&quot;
-</code></pre><p>如果改成用链接名称的方式写：</p>
-<pre><code>I get 10 times more traffic from [Google][] than from
-[Yahoo][] or [MSN][].
-
-  [google]: http://google.com/        &quot;Google&quot;
-  [yahoo]:  http://search.yahoo.com/  &quot;Yahoo Search&quot;
-  [msn]:    http://search.msn.com/    &quot;MSN Search&quot;
-</code></pre><h3 id="强调"><a href="#强调" class="headerlink" title="强调"></a>强调</h3><p>Markdown 使用星号（<code>*</code>）和底线（<code>_</code>）作为标记强调字词的符号，被 或 <em> 包围的字词会被转成用 标签包围，用两个 或 </em> 包起来的话，则会被转成 <code>&lt;strong&gt;</code>，例如：</p>
-<pre><code>*single asterisks*
-
-_single underscores_
-
-**double asterisks**
-
-__double underscores__
-</code></pre><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>如果要标记一小段行内代码，你可以用反引号把它包起来（`），例如：</p>
-<pre><code>Use the `printf()` function.
-</code></pre><p>如果要在代码区段内插入反引号，你可以用多个反引号来开启和结束代码区段：</p>
-<pre><code>``There is a literal backtick (`) here.``
-</code></pre><p>代码区段的起始和结束端都可以放入一个空白，起始端后面一个，结束端前面一个，这样你就可以在区段的一开始就插入反引号：</p>
-<pre><code>A single backtick in a code span: `` ` ``
-
-A backtick-delimited string in a code span: `` `foo` ``
-</code></pre><p>在代码区段内，<code>&amp;</code> 和尖括号都会被自动地转成 HTML 实体，这使得插入 HTML 原始码变得很容易，Markdown 会把下面这段：</p>
-<pre><code>Please don&apos;t use any `&lt;blink&gt;` tags.
-</code></pre><p>你也可以这样写：</p>
-<pre><code>`&amp;#8212;` is the decimal-encoded equivalent of `&amp;mdash;`.
-</code></pre><h2 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h2><p>很明显地，要在纯文字应用中设计一个「自然」的语法来插入图片是有一定难度的。</p>
-<p>Markdown 使用一种和链接很相似的语法来标记图片，同样也允许两种样式： 行内式和参考式。</p>
-<p>行内式的图片语法看起来像是：</p>
-<pre><code>![Alt text](/path/to/img.jpg)
-
-![Alt text](/path/to/img.jpg &quot;Optional title&quot;)
-</code></pre><p>详细叙述如下：</p>
-<p>一个惊叹号 <code>!</code></p>
-<ul>
-<li>接着一个方括号，里面放上图片的替代文字</li>
-<li>接着一个普通括号，里面放上图片的网址，最后还可以用引号包住并加上 选择性的 ‘title’ 文字。</li>
-</ul>
-<p>参考式的图片语法则长得像这样：</p>
-<pre><code>![Alt text][id]
-</code></pre><p>「id」是图片参考的名称，图片参考的定义方式则和连结参考一样：</p>
-<pre><code>[id]: url/to/image  &quot;Optional title attribute&quot;
-</code></pre><p>到目前为止， Markdown 还没有办法指定图片的宽高，如果你需要的话，你可以使用普通的<code>&lt;img&gt;</code>标签。</p>
-<p>本地图片上传</p>
-<p>登陆<a href="http://yotuku.cn/" target="_blank" rel="external">http://yotuku.cn/</a><br>上传图片，点击markdown，粘贴到markdown文档即可</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="http://myappol.cn/2016/12/12/hello-world/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="qiujichao">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="/images/avatar.gif">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="裘继超的博客">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="裘继超的博客" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/12/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T11:09:29+08:00">
-                2016-12-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -990,6 +628,10 @@ A backtick-delimited string in a code span: `` `foo` ``
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -1009,8 +651,17 @@ A backtick-delimited string in a code span: `` `foo` ``
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -1049,6 +700,22 @@ A backtick-delimited string in a code span: `` `foo` ``
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-let、const和block-作用域"><span class="nav-number">1.</span> <span class="nav-text">1. let、const和block 作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-剪头函数"><span class="nav-number">2.</span> <span class="nav-text">2.剪头函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-函数参数默认值"><span class="nav-number">3.</span> <span class="nav-text">3.函数参数默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Spread-Rest-操作符"><span class="nav-number">4.</span> <span class="nav-text">4.Spread / Rest 操作符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-对象词法扩展"><span class="nav-number">5.</span> <span class="nav-text">5. 对象词法扩展</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-二进制和八进制字面量"><span class="nav-number">6.</span> <span class="nav-text">6.二进制和八进制字面量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-对象和数组结构"><span class="nav-number">7.</span> <span class="nav-text">7.对象和数组结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-对象超类"><span class="nav-number">8.</span> <span class="nav-text">8.对象超类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-模版语法和分隔符"><span class="nav-number">9.</span> <span class="nav-text">9.模版语法和分隔符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-for…of-VS-for…in"><span class="nav-number">10.</span> <span class="nav-text">10. for…of  VS  for…in</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-Map-和-WeakMap"><span class="nav-number">11.</span> <span class="nav-text">11. Map 和 WeakMap</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-Set-和-WeakSet"><span class="nav-number">12.</span> <span class="nav-text">12. Set 和 WeakSet</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#WeakSet"><span class="nav-number">12.1.</span> <span class="nav-text">WeakSet</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-类"><span class="nav-number">13.</span> <span class="nav-text">13. 类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-Symbol"><span class="nav-number">14.</span> <span class="nav-text">14. Symbol</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-迭代器（Iterators）"><span class="nav-number">15.</span> <span class="nav-text">15. 迭代器（Iterators）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-Generators"><span class="nav-number">16.</span> <span class="nav-text">16. Generators</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-Promises"><span class="nav-number">17.</span> <span class="nav-text">17. Promises</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -1147,6 +814,10 @@ A backtick-delimited string in a code span: `` `foo` ``
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
