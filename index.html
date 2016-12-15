@@ -530,8 +530,8 @@ itr.next(); // { value: 12, done: false }
 itr.next(); // { value: 13, done: false }
 
 itr.next(); // { value: undefined, done: true }
-你可以通过 [Symbol.iterator]() 自定义一个对象的迭代器。
-</code></pre><h2 id="16-Generators"><a href="#16-Generators" class="headerlink" title="16. Generators"></a>16. Generators</h2><p>Generator 函数是 ES6 的新特性，它允许一个函数返回的可遍历对象生成多个值。</p>
+</code></pre><p>你可以通过 <a href="">Symbol.iterator</a> 自定义一个对象的迭代器。</p>
+<h2 id="16-Generators"><a href="#16-Generators" class="headerlink" title="16. Generators"></a>16. Generators</h2><p>Generator 函数是 ES6 的新特性，它允许一个函数返回的可遍历对象生成多个值。</p>
 <p>在使用中你会看到 <code>*</code> 语法和一个新的关键词 yield:</p>
 <pre><code>function *infiniteNumbers() {
   var n = 1;
