@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>裘继超的博客</title>
+  <title>我的博客</title>
   
   <link href="/atom.xml" rel="self"/>
   
@@ -9,7 +9,7 @@
   <id>http://myappol.cn/</id>
   
   <author>
-    <name>qiujichao</name>
+    <name>裘继超</name>
     
   </author>
   
