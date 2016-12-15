@@ -102,7 +102,7 @@ console.log(a); //2
 }
 console.log(a); //2
 同样在块级作用域有效的另一个变量声明方式是 const,它可以声明一个常量。ES6中，const声明的常量类似于指针，它指向某个引用，也就是说这个［常量］ 并非一成不变的，如：    {      const ARR">
-<meta property="og:updated_time" content="2016-12-15T02:04:12.000Z">
+<meta property="og:updated_time" content="2016-12-15T02:06:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="es6语法特性">
 <meta name="twitter:description" content="1. let、const和block 作用域var a = 2;
@@ -537,8 +537,10 @@ console.log(typeof sym); // symbol
 <p>如果它被用作一个对象的属性，那么这个属性会是不可枚举的：<br>      var o = {<br>          val: 10,<br>          [ Symbol(“random”) ]: “I’m a symbol”,<br>      };</p>
 <pre><code>console.log(Object.getOwnPropertyNames(o)); // val
 </code></pre><p>如果要获取对象 symbol 属性，需要使用 Object.getOwnPropertySymbols(o)。</p>
-<h2 id="15-迭代器（Iterators）"><a href="#15-迭代器（Iterators）" class="headerlink" title="15. 迭代器（Iterators）"></a>15. 迭代器（Iterators）</h2><p>迭代器允许每次访问数据集合的一个元素，当指针指向数据集合最后一个元素时，迭代器便会退出。它提供了next()函数来遍历一个序列，这个方法返回一个包含done 和value属性的对象。<br>ES6中可以通过Symbol.iterator 给对象设置默认的遍历器，无论什么时候对象需要被遍历，执行它的iterator方法便可以返回一个用于获取值的迭代器。<br>数组默认就是一个迭代器：<br>      var arr = [11,12,13];<br>      var itr = arr<a href="">Symbol.iterator</a>;</p>
-<pre><code>itr.next(); // { value: 11, done: false }
+<h2 id="15-迭代器（Iterators）"><a href="#15-迭代器（Iterators）" class="headerlink" title="15. 迭代器（Iterators）"></a>15. 迭代器（Iterators）</h2><p>迭代器允许每次访问数据集合的一个元素，当指针指向数据集合最后一个元素时，迭代器便会退出。它提供了next()函数来遍历一个序列，这个方法返回一个包含done 和value属性的对象。<br>ES6中可以通过Symbol.iterator 给对象设置默认的遍历器，无论什么时候对象需要被遍历，执行它的iterator方法便可以返回一个用于获取值的迭代器。<br>数组默认就是一个迭代器：</p>
+<pre><code>var arr = [11,12,13];
+var itr = arr[Symbol.iterator]();
+itr.next(); // { value: 11, done: false }
 itr.next(); // { value: 12, done: false }
 itr.next(); // { value: 13, done: false }
 
