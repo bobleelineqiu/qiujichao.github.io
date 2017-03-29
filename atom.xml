@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://myappol.cn/"/>
-  <updated>2016-12-15T05:37:29.000Z</updated>
+  <updated>2017-03-29T02:28:49.000Z</updated>
   <id>http://myappol.cn/</id>
   
   <author>
@@ -14,6 +14,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>组件使用说明</title>
+    <link href="http://myappol.cn/2017/03/29/%E7%BB%84%E4%BB%B6%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/"/>
+    <id>http://myappol.cn/2017/03/29/组件使用说明/</id>
+    <published>2017-03-29T02:28:30.000Z</published>
+    <updated>2017-03-29T02:28:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>##组件使用说明</p>
+<p>###页面布局</p>
+<blockquote>
+<ul>
+<li>最大div<br><code>&lt;div class=&quot;PagesWrap&quot;&gt;</code></li>
+<li>左右两部分<br>左:  <code>&lt;div class=&quot;ContentLeft AllTitleP&quot;&gt;</code><br>右： <code>&lt;div class=&quot;ContentRight AllTitleP&quot;&gt;</code><br>注：右边顶部不是tab标签的情况下这样设置</li>
+<li>左边部分<br>标题    <code>例：&lt;p class=&quot;zddxfjjg&quot;&gt;诊断对象分解结构&lt;/p&gt;</code><br>标题下面部分 <code>&lt;div class=&quot;ContentPadding ContentPaddingLeft&quot;&gt;</code></li>
+<li>右边部分<br>标题和右边一致<br>标题下面部分<code>&lt;div class=&quot;ContentPadding ContentPaddingRight&quot;&gt;</code></li>
+<li>按钮<br>每个按钮控件都要用<code>&lt;div class=&quot;BtnWrap&quot;&gt;</code>包裹</li>
+</ul>
+</blockquote>
+<p>###搜索框+右侧有按钮<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">例：</div><div class="line">&lt;div class=&quot;SearchWrap&quot;&gt;</div><div class="line">     &lt;div class=&quot;SearchCondition&quot;&gt; //左侧搜索框</div><div class="line">        &lt;input class=&quot;SearchKeyWord&quot; type=&quot;text&quot; placeholder=&quot;请输入关键字&quot; /&gt;</div><div class="line">        &lt;button class=&quot;DoSearch&quot; type=&quot;button&quot;&gt;&amp;nbsp;&lt;/button&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;BtnWrap&quot;&gt;  //右侧按钮</div><div class="line">        &lt;button class=&quot;BtnBg addbtn&quot; type=&quot;button&quot; data-toggle=&quot;tooltip&quot;  title=&quot;添加数据对象&quot;&gt;&amp;nbsp;&lt;/button&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>###当前位置+右侧按钮<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">例：</div><div class="line">&lt;div class=&quot;SearchWrap&quot;&gt;</div><div class="line">    &lt;p class=&quot;bytePointer&quot;&gt;当前位置：系统分类&amp;gt;设备分类&amp;gt;压缩机&lt;/p&gt;</div><div class="line">    &lt;!-- 带背景图的按钮--&gt;</div><div class="line">    &lt;div class=&quot;BtnWrap&quot;&gt;</div><div class="line">        &lt;button class=&quot;BtnBg addbtn&quot; type=&quot;button&quot; data-toggle=&quot;tooltip&quot;  title=&quot;添加数据对象&quot;&gt;&amp;nbsp;&lt;/button&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>###普通按钮</p>
+<blockquote>
+<p>按钮颜色：蓝色设置class为Blue，白色设置class为White<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">例：</div><div class="line">&lt;div class=&quot;BtnWrap&quot;&gt;</div><div class="line">    &lt;button id=&quot;NewAdd&quot; class=&quot;BtnWord Blue&quot; type=&quot;button&quot;&gt;新增&lt;/button&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>###tab切换<br>外层div<code>&lt;div class=&quot;TabMenu AllTitleP&quot;&gt;</code><br>标签页<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;ul class=&quot;TabLists&quot;&gt;</div><div class="line">    &lt;li id=&quot;tabFirst&quot; class=&quot;tabLi tabON&quot;&gt;</div><div class="line">        &lt;i class=&quot;tabIRight&quot;&gt;&lt;/i&gt;</div><div class="line">        &lt;span&gt;实体诊断对象关联&lt;/span&gt;</div><div class="line">    &lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
+<p>标签内容页<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">例：</div><div class="line">&lt;div class=&quot;TabContent ContentPaddingRight&quot;&gt;</div><div class="line">    &lt;div class=&quot;TabCon TabContent1&quot;&gt;实体诊断对象关联&lt;/div&gt;</div><div class="line">    &lt;div class=&quot;TabCon TabContent2&quot;&gt;实体测点关联&lt;/div&gt;</div><div class="line">    &lt;div class=&quot;TabCon TabContent3&quot;&gt;首页&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p> 标签内容页中标题部分有虚线下边框<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">例：</div><div class="line">&lt;div class=&quot;TitleDashed&quot;&gt;  //有虚线下边框的标题栏</div><div class="line">    &lt;div class=&quot;TitleDash&quot;&gt;</div><div class="line">        &lt;p class=&quot;zddxglstdx&quot;&gt;诊断对象关联实体对象&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p>###下拉框<br>外层div<code>&lt;div class=&quot;dropdownList&quot;&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">例：</div><div class="line">&lt;div class=&quot;locationName list&quot;&gt;</div><div class="line">    &lt;span class=&quot;listText&quot;&gt;位置名称：&lt;/span&gt;</div><div class="line">    &lt;div class=&quot;listContent&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如果该下拉框为只读，则多引入一个类 <code>&quot;entityType&quot;</code></p>
+</blockquote>
+<p>###表格<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">基本引入</div><div class="line">&lt;div class=&quot;tableBox no_scrollTable&quot;&gt;</div><div class="line">    &lt;table id=&quot;table1&quot;&gt;&lt;/table&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>类”no_scrollTable”设置为没有滚动条<br>如果需要添加分页，需要在table标签下添加<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;div id=&quot;tablePage8&quot; class=&quot;tablePage&quot;&gt;</div><div class="line">    &lt;a&gt;首页&lt;/a&gt;</div><div class="line">    &lt;a&gt;上一页&lt;/a&gt;</div><div class="line">    &lt;a&gt;下一页&lt;/a&gt;</div><div class="line">    &lt;a&gt;尾页&lt;/a&gt;</div><div class="line">    &lt;span&gt;跳转至&lt;/span&gt;</div><div class="line">    &lt;input type=&quot;text&quot; value=&quot;1&quot;/&gt;</div><div class="line">    &lt;sapn&gt;页&lt;/sapn&gt;</div><div class="line">    &lt;sapn&gt;共&lt;/sapn&gt;</div><div class="line">    &lt;sapn class=&quot;totalPage&quot;&gt;2&lt;/sapn&gt;</div><div class="line">    &lt;sapn&gt;页&lt;/sapn&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>###树形结构<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">例:</div><div class="line">&lt;ul id=&quot;treeDemo&quot; class=&quot;ztree showIcon&quot;&gt;&lt;/ul&gt;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;##组件使用说明&lt;/p&gt;
+&lt;p&gt;###页面布局&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;最大div&lt;br&gt;&lt;code&gt;&amp;lt;div class=&amp;quot;PagesWrap&amp;quot;&amp;gt;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;左右两部分&lt;br&gt;左:  &lt;co
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://myappol.cn/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+      <category term="随笔" scheme="http://myappol.cn/tags/%E9%9A%8F%E7%AC%94/"/>
+    
+  </entry>
   
   <entry>
     <title>es6语法特性</title>
